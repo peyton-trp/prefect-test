@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  prefect-server:
+    build: ./prefect # where the dockerfile is
+    volumes:
+    - .:/usr/src
+    ports:
+    - 8080:8080

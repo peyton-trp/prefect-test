@@ -1,0 +1,6 @@
+[MESSAGES CONTROL]
+
+disable=wrong-import-position,
+    invalid-name,
+    missing-final-newline,
+    wrong-import-order
