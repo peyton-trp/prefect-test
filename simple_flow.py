@@ -56,7 +56,7 @@ sql_task = SqlServerFetch(
 #--------------------------------------------------------------
 # Flow context
 #--------------------------------------------------------------
-with Flow("bird_flow") as f:
+with Flow("github_flow") as f:
 
     password = EnvVarSecret(prefect.config.sql_server.password_var)
 
