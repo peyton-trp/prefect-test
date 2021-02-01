@@ -1,0 +1,72 @@
+# debug mode
+debug = false
+
+# database mode
+mode = "hub"
+
+STORAGE_PATH = '/Users/peytonrunyan/TRP/prefect/prefect_results'
+
+[logging]
+# The logging level: NOTSET, DEBUG, INFO, WARNING, ERROR, or CRITICAL
+level = "INFO"
+
+# The log format
+format = "[%(asctime)s] %(levelname)s - %(name)s | %(message)s"
+
+# additional log attributes to extract from context
+# e.g., log_attributes = "['context_var']"
+log_attributes = "[]"
+
+# the timestamp format
+datefmt = "%Y-%m-%d %H:%M:%S%z"
+
+# Send logs to Prefect Cloud
+log_to_cloud = false
+
+# Extra loggers for Prefect log configuration
+extra_loggers = "[]"
+
+[flows]
+# If true, edges are checked for cycles as soon as they are added to the flow. If false,
+# cycles are only checked when tasks are sorted (for example, when running or
+# serializing the flow). Defaults to false because it can affect the performance of
+# large flows.
+eager_edge_validation = false
+# If true, `flow.run` will run on schedule by default.
+# If false, only a single execution will occur (no retries, etc.)
+run_on_schedule = true
+# If true, tasks which set `checkpoint=True` will have their result handlers called
+checkpointing = false
+
+    [flows.defaults]
+        [flows.defaults.storage]
+        # Whether to include a storage's default labels. Useful for
+        # controlling Agent's workflows.
+        add_default_labels = true
+        # the default storage class, specified using a full path
+        default_class = "prefect.storage.Local"
+
+
+[sql_server]
+    server = "recyclingpartnership.database.windows.net"
+    port = "1433"
+    driver = "ODBC Driver 17 for SQL Server"
+    dsn = "MYMSSQL"
+    user = "${sql_server.${mode}.user}"
+    database = "${sql_server.${mode}.database}"
+    password_var = "${sql_server.${mode}.password_var}"
+
+    [sql_server.dev]
+        user = "Dev_login"
+        database = "TRP_DEV"
+        password_var = "DEV_PW"
+
+    [sql_server.hub]
+        user = "App_login"
+        database = "TRP_HUB"
+        password_var = "HUB_PW"
+
+    [sql_server.prod]
+        user = "Prod_login"
+        database = "TRP_PROD"
+        password_var = "PROD_PW"

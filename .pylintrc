@@ -3,4 +3,7 @@
 disable=wrong-import-position,
     invalid-name,
     missing-final-newline,
-    wrong-import-order
+    wrong-import-order,
+    no-name-in-module,
+    import-error,
+    no-member

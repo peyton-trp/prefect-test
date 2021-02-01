@@ -142,3 +142,4 @@ cython_debug/
 # other
 data_management/
 prefect_results/
+envs.sh
