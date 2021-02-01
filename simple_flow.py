@@ -77,7 +77,7 @@ f.run_config = LocalRun(
 
 f.storage = GitHub(
     repo="peyton-trp/prefect-test",
-    path="pipeline.py",
+    path="simple_flow.py",
     secrets=["GITHUB_ACCESS_TOKEN"]
 )
 
